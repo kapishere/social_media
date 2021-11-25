@@ -1,5 +1,5 @@
 <?php  
-require 'config.php';
+require 'require/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -7,8 +7,8 @@ require 'config.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rejestracja</title>
-    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="page">
