@@ -46,6 +46,10 @@ h1 {
   text-decoration: none;
   margin-top: 10%;
 }
-a {
+.form-box a {
   text-decoration: none;
+}
+.form-box p {
+  text-align: center;
+  color: red;
 }

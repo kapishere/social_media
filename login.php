@@ -1,9 +1,6 @@
 <?php  
 require 'config.php';
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -23,22 +20,20 @@ require 'config.php';
          </div>
         <div class="form-box">
           <label for="passwordLogin">Hasło:</label>
-          <input type="password" id="passwordLogin" placeholder="Hasło" />
+          <input type="password" name="passwordLogin" placeholder="Hasło" />
         </div>
          <div class="form-box">
 		<input type="submit" name="submitLogin" value="Zaloguj się"><br>
    </div>
     <div class="form-box">
-   <button> <a href="register.php">Nie masz konta? Stwórz je</a></button></div>
-</form>
-
+  
  
          
   <?php
  if(isset($_POST['submitLogin'])) {
     $emailLog=$_POST['emailLogin'];
       $passwordLog=$_POST['passwordLogin'];
-
+  if(empty($emailLog) || empty($passwordLog)) echo '<p>wypełnij dane</p>';else{
 	$accountExists = mysqli_query($conn, "SELECT email ,password FROM users WHERE email='$emailLog'");
 	$accountExistsQuery = mysqli_num_rows($accountExists);
 
@@ -50,14 +45,13 @@ require 'config.php';
 		 header("Location: index.php");
 		 exit();
         }
-	echo 'Bledne haslo';
+	echo 'Błędne hasło';
     
-	}else echo 'Bledny login';
-   
-        
-	
-
- }
-?></div>
+	}else echo '<p>Błędny e-mail</p>';
+ }}
+?>
+ <button> <a href="register.php">Nie masz konta? Stwórz je</a></button></div>
+</form>
+</div>
 </body>
 </html>
