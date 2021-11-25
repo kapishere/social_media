@@ -1,4 +1,4 @@
-/* * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,8 +9,43 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
+.page {
+  width: 440px;
+  background-color: white;
+  box-shadow: 0 0 10px black;
+  border-radius: 5px;
+}
 form {
   padding: 40px;
   font-size: 20px;
-} */
+}
+h1 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.form-box {
+  margin-bottom: 15px;
+}
+.form-box label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.form-box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 5px;
+}
+.form-box button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10%;
+}
+a {
+  text-decoration: none;
+}

@@ -1,6 +1,5 @@
 <?php  
 require 'config.php';
-require 'db.php';
 ?>
 
 
@@ -12,23 +11,34 @@ require 'db.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rejestracja</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="page">
+  
     <form action="" method="POST">
-		<input type="text" name="emailLogin" placeholder="E-mail"><br>
-		<input type="password" name="passwordLogin" placeholder="Haslo" ><br>
-		<input type="submit" name="submitLogin" value="Register"><br>
-	</form>
-    <form action="" method="POST">
+ <h1>Zarejestruj się</h1>
+     <div class="form-box">
+          <label for="fname">Imie:</label>
 		<input type="text" name="fname" placeholder="Imie" ><br>
+     </div> <div class="form-box">
+          <label for="lname">Nazwisko:</label>
 		<input type="text" name="lname" placeholder="Nazwisko"><br>
+     </div> <div class="form-box">
+          <label for="email">E-mail:</label>
 		<input type="text" name="email" placeholder="E-mail"><br>
-		<input type="password" name="password" placeholder="Haslo" ><br>
-		<input type="password" name="password2" placeholder="Potwierdz haslo" ><br>
-		<input type="submit" name="submitRegister" value="Register"><br>
+     </div> <div class="form-box">
+          <label for="password">Hasło:</label>
+		<input type="password" name="password" placeholder="Hasło" ><br>
+     </div> <div class="form-box">
+          <label for="password2">Potwierdź hasło:</label>
+		<input type="password" name="password2" placeholder="Potwierdź hasło" ><br>
+     </div> <div class="form-box">
+		<input type="submit" name="submitRegister" value="Zarejestruj się"><br></div>
+     <div class="form-box">
+   <button>  <a href="login.php">Masz już konto zaloguj się</a></button></div>
 	</form>
+ 
     <?php
      if(isset($_POST['submitRegister'])) {
     $email=$_POST['email'];
@@ -45,30 +55,9 @@ require 'db.php';
 if($password!=$password2) echo 'Hasla sie roznia'; else{
     $hashedPassword =password_hash($password, PASSWORD_DEFAULT);
  $query = mysqli_query($conn, "INSERT INTO users VALUES ('', '$fname', '$lname', '$email', '$hashedPassword')");
-}}}}
- if(isset($_POST['submitLogin'])) {
-    $emailLog=$_POST['emailLogin'];
-      $passwordLog=$_POST['passwordLogin'];
-
-	$accountExists = mysqli_query($conn, "SELECT email ,password FROM users WHERE email='$emailLog'");
-	$accountExistsQuery = mysqli_num_rows($accountExists);
-
-	if($accountExistsQuery > 0) {
-        $row = mysqli_fetch_array($accountExists);
-        if (password_verify($passwordLog, $row['password']))
-        {
-				$_SESSION['email'] = $emailLog;
-		 header("Location: index.php");
+ header("Location: login.php");
 		 exit();
-        }
-	echo 'Bledne haslo';
-    
-	}else echo 'Bledny login';
-   
-        
-	
-
- }
+}}}}
 ?></div>
 </body>
 </html>
