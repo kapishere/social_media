@@ -3,6 +3,7 @@ require 'require/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,26 +11,27 @@ require 'require/config.php';
     <title>Logowanie</title>
     <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 </head>
+
 <body>
     <div class="page">
-    <form action="" method="POST">
-    <h1>Zaloguj się</h1>
-         <div class="form-box">
-              <label for="emailLogin">Email:</label>
-		<input type="text" name="emailLogin" placeholder="E-mail"><br>
-         </div>
-        <div class="form-box">
-          <label for="passwordLogin">Hasło:</label>
-          <input type="password" name="passwordLogin" placeholder="Hasło" />
-        </div>
-         <div class="form-box">
-		<input type="submit" name="submitLogin" value="Zaloguj się"><br>
-   </div>
-    <div class="form-box">
-  
- 
-         
-  <?php
+        <form action="" method="POST">
+            <h1>Zaloguj się</h1>
+            <div class="form-box">
+                <label for="emailLogin">Email:</label>
+                <input type="text" name="emailLogin" placeholder="E-mail"><br>
+            </div>
+            <div class="form-box">
+                <label for="passwordLogin">Hasło:</label>
+                <input type="password" name="passwordLogin" placeholder="Hasło" />
+            </div>
+            <div class="form-box">
+                <input type="submit" name="submitLogin" value="Zaloguj się"><br>
+            </div>
+            <div class="form-box">
+
+
+
+                <?php
  if(isset($_POST['submitLogin'])) {
     $emailLog=$_POST['emailLogin'];
       $passwordLog=$_POST['passwordLogin'];
@@ -50,8 +52,10 @@ require 'require/config.php';
 	}else echo '<p>Błędny e-mail</p>';
  }}
 ?>
- <button> <a href="register.php">Nie masz konta? Stwórz je</a></button></div>
-</form>
-</div>
+                <button> <a href="register.php">Nie masz konta? Stwórz je</a></button>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>
