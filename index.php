@@ -3,6 +3,8 @@ include ("include/header.php");
 include ("classes/user.php");
 include ("classes/posts.php");
 
+$userLoggedIn=$user['username'];
+
 if(isset($_POST['publish']))
 {
 $post=new Posts($conn, $user['username']);
@@ -27,8 +29,8 @@ header("Location: index.php");
             > <a href="<?php echo $user['username']?>">
                 <?php echo $user['name'].' '.$user['last_name']; ?></a>
             <?php
-            echo '<br>Polubienia'.$user['likes'];
-            echo '<br>Posty'.$user['posts'];
+            echo '<br>Polubienia '.$user['likes'];
+            echo '<br>Posty '.$user['posts'];
             ?>
         </div>
         <div class="wall column">
@@ -39,12 +41,21 @@ header("Location: index.php");
 
 
             <?php
-$user_obj=new User($conn, $user['username']);
-echo $user_obj->getUsername();
+// $user_obj=new User($conn, $user['username']);
+// echo $user_obj->getUsername();
+
+$post=new Posts($conn, $user['username']);
+$post->loadPosts();
+
+
+
             ?>
         </div>
 
         </div>
+
+
     </body>
+
 
     </html>

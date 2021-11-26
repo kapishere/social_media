@@ -33,17 +33,21 @@ require 'require/config.php';
 
                 <?php
  if(isset($_POST['submitLogin'])) {
+
     $emailLog=$_POST['emailLogin'];
       $passwordLog=$_POST['passwordLogin'];
+
   if(empty($emailLog) || empty($passwordLog)) echo '<p>wypełnij dane</p>';else{
-	$accountExists = mysqli_query($conn, "SELECT email ,password FROM users WHERE email='$emailLog'");
+	$accountExists = mysqli_query($conn, "SELECT email, username ,password FROM users WHERE email='$emailLog'");
 	$accountExistsQuery = mysqli_num_rows($accountExists);
+ 
 
 	if($accountExistsQuery > 0) {
         $row = mysqli_fetch_array($accountExists);
         if (password_verify($passwordLog, $row['password']))
         {
 				$_SESSION['email'] = $emailLog;
+                $_SESSION['username']=$username;
 		 header("Location: index.php");
 		 exit();
         }

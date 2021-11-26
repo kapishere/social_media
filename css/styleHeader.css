@@ -4,11 +4,9 @@
   background-color: #bdc3c7;
   min-width: 1050px;
   min-height: 1px;
-  margin-bottom: 10px;
   display: inline-flex;
   font-size: 40px;
-  position: fixed;
-  z-index: 10;
+  /* position: fixed; */
 }
 .top-bar a {
   margin-top: 20px;
@@ -31,9 +29,9 @@ nav i {
   color: white;
 }
 .wrapper {
-  display: flex;
+  /* display: flex; */
   margin: auto;
-  top: 10%;
+
   position: relative;
   padding: 0 10px;
   width: 75%;
@@ -58,7 +56,7 @@ nav i {
   border: 1px solid black;
 }
 .form-wall {
-  width: 100vh;
+  width: 100%;
   z-index: -1;
 }
 .form-wall textarea {
@@ -68,4 +66,46 @@ nav i {
   margin-right: 5px;
   border: 1px solid black;
   line-height: 1.2em;
+}
+#comment_iframe {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+#comment_form textarea {
+  border-color: #d3d3d3;
+  width: 85%;
+  height: 35px;
+  border-radius: 5px;
+  color: #616060;
+  font-size: 14px;
+  margin: 3px 3px 3px 5px;
+}
+#comment_form input {
+  border: none;
+  margin: auto;
+  position: relative;
+  border-radius: 5px;
+  width: 13%;
+  height: 35px;
+  margin-top: 3px;
+}
+.newsFeed {
+  padding: 0px;
+  text-decoration: none;
+}
+
+.newsFeed iframe {
+  border: 0px;
+  height: 5%;
+  width: 30%;
+}
+
+.comment_like {
+}
+
+.like_value {
+  display: inline;
+  font-size: 14px;
 }
