@@ -29,12 +29,11 @@ $updatePosts=mysqli_query($this->conn, "Update users SET posts='$posts' where us
     
 }
 
-public function loadPosts()
+public function showPosts($data)
 {
-    $string="";
-
-    $data=mysqli_query($this->conn, "Select * from posts  order by date desc Limit 15");
-    while($row=mysqli_fetch_array($data))
+    $string='';
+    
+  while($row=mysqli_fetch_array($data))
     {
         $id=$row['id'];
         $body=$row['body'];
@@ -49,8 +48,6 @@ public function loadPosts()
             $receiver="<a href='".$row['receiver']."'>do ".$receiver."</a>";
         }
         
-// $userDetails=mysqli_query($this->conn, "Select Name, Last_name from users where username='$author'");
-// $user_row=mysqli_fetch_array($userDetails);
 
 ?>
 <script>
@@ -130,20 +127,19 @@ if($interval->y >= 1) {
 
 $string.="<div class='status-posts' onClick='toggle$id()'>
 <div class='author-name'>
-<a href='$author'>$author</a> $receiver &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$time_message 
+<a href='$author'>$author</a><h3 style='display: inline-block;'> $receiver </h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 style='display: inline-block;'> $time_message</h4>  <br><br>
 </div>
-<div class='post-body'>$body<br></div>
+<div class='post-body'>$body<br></div><br>
 </div>
 <div class='newsFeed' onClick='toggle$id()'>
-Comments($commentsNumber)&nbsp&nbsp&nbsp
+Komentarzy($commentsNumber)&nbsp&nbsp&nbsp
 
-
-<iframe src='likes.php?post_id=$id' scrolling='no' frameborder='0'></iframe>
 </div>
 <div class='post_comment' id='toggleComment$id' style='display:none;'>
 <iframe src='comment.php?post_id=$id' frameborder='0' id='comment_iframe'></iframe>
-
 </div>
+<iframe src='likes.php?post_id=$id' scrolling='no' class='likesIframe' frameborder='0'  
+    height='4%'></iframe>
 <hr>
 ";
 
@@ -151,28 +147,18 @@ Comments($commentsNumber)&nbsp&nbsp&nbsp
 echo $string;
 }
 
-public function loadProfilePosts($receiver, $author)
+
+public function loadPosts()
 {
-	
- $data=mysqli_query($this->conn, "Select * from posts  order by date desc where receiver='$receiver' or author='$author' Limit 15");
-    while($row=mysqli_fetch_array($data))
-    {
-        $id=$row['id'];
-        $body=$row['body'];
-        $author=$row['author'];
-        $date=$row['date'];
-        $receiver=$row['receiver'];
-   
-
-        if($row['receiver']!=='')
-        {
-            $objectUser=new User($this->conn, $row['author']);//conn
-            $receiver="<a href='".$row['receiver']."'>do ".$receiver."</a>";
-        }
-
-Posts::loadPosts();
-
+    $data=mysqli_query($this->conn, "Select * from posts  order by date desc Limit 15");
+  Posts::showPosts($data);
 }
+
+public function loadProfilePosts($profile)
+{
+    $data=mysqli_query($this->conn, "Select * from posts where author='$profile' or receiver='$profile' order by date desc limit 15");
+  Posts::showPosts($data);
+
 }
 
 }

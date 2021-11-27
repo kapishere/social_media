@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/styleHeader.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/styleHeader.css">
+
 </head>
 
 <body>
@@ -67,7 +68,14 @@ if(mysqli_num_rows($checkLikes)>0)
 {
     
     echo '<form action="likes.php?post_id='.$postId.'" method="POST">
-    <input type="submit" class="comment_like" name="unLikeButton" value="nie lubie tego">
+    <input type="submit" class="comment_like" class="likeBtn" name="unLikeButton" value="nie lubie tego" style="
+  border: none;
+  position: relative;
+  border-radius: 5px;
+  width:100px;
+  height: 20px;
+  font-size:14px;
+">
     <div class="like_value">
     '.$totalLikes.' Polubienia
     </div>
@@ -77,7 +85,14 @@ if(mysqli_num_rows($checkLikes)>0)
 else 
 {
      echo '<form action="likes.php?post_id='.$postId.'" method="POST">
-    <input type="submit" class="comment_like" name="LikeButton" value="lubie to">
+    <input type="submit" class="comment_like" class="likeBtn" name="LikeButton" value="lubie to" style="
+  border: none;
+  position: relative;
+  border-radius: 5px;
+  height: 20px;
+  width:80px;
+  font-size:14px;
+">
     <div class="like_value">
     '.$totalLikes.' Polubienia
     </div>

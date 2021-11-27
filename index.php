@@ -3,14 +3,12 @@ include ("include/header.php");
 
 
 $userLoggedIn=$user['username'];
-
+	$friendsNum = (substr_count($user['friendArr'], ",")) - 1;
 if(isset($_POST['publish']))
 {
 $post=new Posts($conn, $user['username']);
 $post->submitPosts($_POST['post_text'], '');
 header("Location: index.php");
-
-
 }
 ?>
     <!DOCTYPE html>
@@ -24,18 +22,20 @@ header("Location: index.php");
     </head>
 
     <body>
-        <div class="user-details column">
-            > <a href="<?php echo $user['username']?>">
-                <?php echo $user['name'].' '.$user['last_name']; ?></a>
-            <?php
-            echo '<br>Polubienia '.$user['likes'];
-            echo '<br>Posty '.$user['posts'];
-            ?>
-        </div>
         <div class="wall column">
+            <a href="<?php echo $user['username']?>" id="names">
+                <?php echo $user['name'].' '.$user['last_name']; ?></a>
+            <br>
+            <?php
+            echo '<br>Polubienia: '.$user['likes'];
+            echo '<br>Posty: '.$user['posts'];
+            echo '<br>Znajomi '.$friendsNum 
+            ?>
+
+            <br><br><br>
             <form class="form-wall" action="index.php" method="POST">
-                <textarea name="post_text" placeholder="Jak leci?"></textarea>
-                <input type="submit" name="publish" value="Opublikuj">
+                <textarea name="post_text" placeholder="Jak leci?"></textarea><br>
+                <input type="submit" class="publishBtn" name="publish" value="Opublikuj">
             </form>
 
 

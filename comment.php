@@ -141,13 +141,13 @@ $userObject=new User($conn, $author);
     <div class="comment_section">
         <br>
         <a href="<?php echo $author?>" target='_parent'><?php  echo $author; ?></a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $time_message."<br>".$commentBody; ?>
-        <hr>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $time_message."<br><br>".$commentBody; ?><br>
+        <hr> <br><br>
     </div>
     <?php
     }
 }
-else echo "<center><br>No comments</center>"
+else echo "<center><br>Brak komentarzy</center>"
 
 ?>
 

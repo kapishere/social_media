@@ -23,26 +23,24 @@ else header("Location: login.php");
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/styleHeader.css">
         <script src="https://kit.fontawesome.com/39dd631a16.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     </head>
 
     <body>
         <div class="top-bar">
-            <div class="logo">
-                <a href="index.php">Strona główna</a>
-            </div>
+
 
             <nav>
-
-
-                <a href=""><i class="fas fa-envelope fa-2x"></i></a>
-                <a href=""><i class="far fa-bell fa-2x"></i></a>
+                <a href="index.php"><i class="fas fa-home fa-2x"></i></a>
                 <a href="request.php"><i class="fas fa-users fa-2x"></i></a>
-                <a href="<?php echo $user['username']?>"><i class="far fa-user fa-2x"></i></a>
-                <a href=""><i class="fas fa-cogs fa-2x"></i></a>
+                <a href="<?php echo $user['username']?>"><i class="fas fa-user fa-2x"></i></a>
                 <a href="logout.php"><i class="fas fa-sign-out-alt fa-2x"></i></a>
 
             </nav>
 
         </div>
-        <div class="wrapper">
+        <div class="page">
+            <div class="wrapper">

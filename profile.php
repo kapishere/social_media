@@ -1,4 +1,4 @@
-    <?php
+<?php
 include ("include/header.php");
 
 
@@ -21,18 +21,28 @@ $post->submitPosts($_POST['post_text'], $username1);
 
 ?>
 
-    <div class="user-details column">
-        <?php echo $username; ?>
-        <?php echo '<br>Posty '.$userInfo['posts'] ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+
+</head>
+<div class="request">
+    <div class="wall column">
+
+        <a href="<?php echo $user['username']?>" id="names">
+            <?php echo $user['name'].' '.$user['last_name']; ?></a><br>
         <?php echo '<br>Polubienia '.$userInfo['likes'] ?>
+        <?php echo '<br>Posty '.$userInfo['posts'] ?>
         <?php echo '<br>Znajomi '.$friendsNum ?>
 
-    </div>
-    <div class="profileInfo">
-    </div>
 
-    <form action="<?php echo $username;?>" method="POST">
-        <?php $userObject=new User($conn, $username) ;
+
+
+
+        <form action="<?php echo $username;?>" method="POST">
+            <?php $userObject=new User($conn, $username) ;
         
         $loggedUser = new User($conn, $user['username']);
       
@@ -79,15 +89,23 @@ if(isset($_POST['request']))
 {
   header("Location: request.php");
 }
-  ?> <div class="wall column">
+  ?>
+
+
+
+
+
+
+
+            <br><br>
             <form class="form-wall" action="index.php" method="POST">
                 <textarea name="post_text"
-                    placeholder="Napisz coś na temat:  <?php echo $_GET['profile_username']; ?>"></textarea>
-                <input type="submit" name="publish" value="Opublikuj">
+                    placeholder="Napisz coś na temat:    <?php echo $user['name'].' '.$user['last_name']; ?>"></textarea>
+                <input type="submit" class="publishBtn" name="publish" value="Opublikuj">
             </form>
             <?php
 $post=new Posts($conn, $user['username']);
-$post->loadPosts('$username');
+$post->loadProfilePosts($user['username']);
 
         ?>
-    </form>
+        </form>

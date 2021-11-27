@@ -13,7 +13,7 @@ public function getNames()
     $user=$this->user['username'];
     $query=mysqli_query($this->conn, "Select name, last_name from users where username='$user'");
     $row=mysqli_fetch_array($query);
-    return $row['name']."".$row['last_name'];
+    return $row['name']." ".$row['last_name'];
 }
 public function getUsername()
 {

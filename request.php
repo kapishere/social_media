@@ -3,21 +3,24 @@ include ("include/header.php");
 
 ?>
 
-  <div>
-      <p>Zaproszenia do znajomych</p>
-      <?php
+
+  <div class="request">
+      <div class="wall column">
+
+          <h1>Zaproszenia do znajomych</h1><br><br>
+          <?php
 
 $userLoggedIn=$user['username'];
 $query = mysqli_query($conn, "SELECT * FROM friends_requests WHERE user_to='$userLoggedIn'");
 	if(mysqli_num_rows($query) == 0)
-		echo "Nie masz zaproszeń do grona znajomych!";
+		echo "<h3>Nie masz zaproszeń do grona znajomych!</h3>";
 	else {
 
 		while($row = mysqli_fetch_array($query)) {
 			$user_from = $row['user_from'];
 			$user_from_obj = new User($conn, $user_from);
 
-			echo $user_from_obj->getNames() . " wysłał ci zaproszenie do grona znajomych";
+			echo '<h3>'.$user_from_obj->getNames() . " wysłał ci zaproszenie do grona znajomych</h3>";
 
 			$user_from_friend_array = $user_from_obj->getFriends();
 
@@ -36,11 +39,12 @@ $query = mysqli_query($conn, "SELECT * FROM friends_requests WHERE user_to='$use
 				header("Location: request.php");
 			}
 ?>
-      <form action="request.php" method="POST">
-          <input type="submit" name="accept_request<?php echo $user_from; ?>" value="Potwierdź">
-          <input type="submit" name="ignore_request<?php echo $user_from; ?>" value="Usuń">
-      </form>
-      <?php
+          <form action="request.php" method="POST">
+              <input type="submit" class="addBtn" name="accept_request<?php echo $user_from; ?>" value="Potwierdź">
+              <input type="submit" class="addBtn" name="ignore_request<?php echo $user_from; ?>" value="Usuń">
+              <hr>
+          </form>
+          <?php
      
     }
 }
@@ -48,4 +52,4 @@ $query = mysqli_query($conn, "SELECT * FROM friends_requests WHERE user_to='$use
 
 
 
-  </div>
+      </div>
