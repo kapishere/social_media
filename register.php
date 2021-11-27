@@ -60,7 +60,7 @@ require 'require/config.php';
    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) echo "<p>błędny email</p>"; else if($repeatedEmails > 0) echo "<p>email jest już używany</p>"; else	{	
 if($password!=$password2) echo '<p>Hasła się róznia</p>'; else{
     $hashedPassword =password_hash($password, PASSWORD_DEFAULT);
- $query = mysqli_query($conn, "INSERT INTO users VALUES ('', '$fname', '$lname', '$email', '$hashedPassword', '', '', '$fname$lname')");
+ $query = mysqli_query($conn, "INSERT INTO users VALUES ('', '$fname', '$lname', '$email', '$hashedPassword', '', '', '$fname$lname', ',')");
  
  header("Location: login.php");
 		 exit();

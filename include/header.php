@@ -1,5 +1,7 @@
     <?php
 require 'require/config.php';
+include ("classes/user.php");
+include ("classes/posts.php");
 if(isset($_SESSION['email']))
 {
 $userLoggedIn=$_SESSION['email']; 
@@ -35,6 +37,7 @@ else header("Location: login.php");
 
                 <a href=""><i class="fas fa-envelope fa-2x"></i></a>
                 <a href=""><i class="far fa-bell fa-2x"></i></a>
+                <a href="request.php"><i class="fas fa-users fa-2x"></i></a>
                 <a href="<?php echo $user['username']?>"><i class="far fa-user fa-2x"></i></a>
                 <a href=""><i class="fas fa-cogs fa-2x"></i></a>
                 <a href="logout.php"><i class="fas fa-sign-out-alt fa-2x"></i></a>

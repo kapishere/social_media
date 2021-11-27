@@ -13,11 +13,10 @@ public function submitPosts($body, $receiver)
 {
 
 
-
 $date_added=date("Y-m-d H:i:s");
 $author=$this->objectUser->getUsername();
 
-if($receiver=$author)
+if($receiver===$author)
 {
     $receiver='';
 }
@@ -47,7 +46,7 @@ public function loadPosts()
         if($row['receiver']!=='')
         {
             $objectUser=new User($this->conn, $row['author']);//conn
-            $receiver="<a href='".$row['receiver']."'>to ".$receiver."</a>";
+            $receiver="<a href='".$row['receiver']."'>do ".$receiver."</a>";
         }
         
 // $userDetails=mysqli_query($this->conn, "Select Name, Last_name from users where username='$author'");
@@ -71,8 +70,6 @@ function toggle<?php echo $id?>() {
 
 }
 </script>
-
-
 
 <?php
 $commentsNum=mysqli_query($this->conn, "SELECT * FROM comments where post_id='$id'");
@@ -151,9 +148,31 @@ Comments($commentsNumber)&nbsp&nbsp&nbsp
 ";
 
 }
-
 echo $string;
+}
 
+public function loadProfilePosts($receiver, $author)
+{
+	
+ $data=mysqli_query($this->conn, "Select * from posts  order by date desc where receiver='$receiver' or author='$author' Limit 15");
+    while($row=mysqli_fetch_array($data))
+    {
+        $id=$row['id'];
+        $body=$row['body'];
+        $author=$row['author'];
+        $date=$row['date'];
+        $receiver=$row['receiver'];
+   
+
+        if($row['receiver']!=='')
+        {
+            $objectUser=new User($this->conn, $row['author']);//conn
+            $receiver="<a href='".$row['receiver']."'>do ".$receiver."</a>";
+        }
+
+Posts::loadPosts();
+
+}
 }
 
 }

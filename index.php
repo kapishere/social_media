@@ -1,7 +1,6 @@
     <?php
 include ("include/header.php");
-include ("classes/user.php");
-include ("classes/posts.php");
+
 
 $userLoggedIn=$user['username'];
 
