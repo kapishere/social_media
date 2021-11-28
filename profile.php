@@ -31,8 +31,8 @@ $post->submitPosts($_POST['post_text'], $username1);
 <div class="request">
     <div class="wall column">
 
-        <a href="<?php echo $user['username']?>" id="names">
-            <?php echo $user['name'].' '.$user['last_name']; ?></a><br>
+        <a href="<?php echo $userInfo['username']?>" id="names">
+            <?php echo $userInfo['name'].' '.$userInfo['last_name']; ?></a><br>
         <?php echo '<br>Polubienia '.$userInfo['likes'] ?>
         <?php echo '<br>Posty '.$userInfo['posts'] ?>
         <?php echo '<br>Znajomi '.$friendsNum ?>
@@ -100,12 +100,12 @@ if(isset($_POST['request']))
             <br><br>
             <form class="form-wall" action="index.php" method="POST">
                 <textarea name="post_text"
-                    placeholder="Napisz coś na temat:    <?php echo $user['name'].' '.$user['last_name']; ?>"></textarea>
+                    placeholder="Napisz coś na temat:    <?php echo $userInfo['name'].' '.$userInfo['last_name']; ?>"></textarea>
                 <input type="submit" class="publishBtn" name="publish" value="Opublikuj">
             </form>
             <?php
-$post=new Posts($conn, $user['username']);
-$post->loadProfilePosts($user['username']);
+$post=new Posts($conn, $userInfo['username']);
+$post->loadProfilePosts($userInfo['username']);
 
         ?>
         </form>

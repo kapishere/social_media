@@ -22,24 +22,25 @@ header("Location: index.php");
     </head>
 
     <body>
-        <div class="wall column">
-            <a href="<?php echo $user['username']?>" id="names">
-                <?php echo $user['name'].' '.$user['last_name']; ?></a>
-            <br>
-            <?php
+        <div class="request">
+            <div class="wall column">
+                <a href="<?php echo $user['username']?>" id="names">
+                    <?php echo $user['name'].' '.$user['last_name']; ?></a>
+                <br>
+                <?php
             echo '<br>Polubienia: '.$user['likes'];
             echo '<br>Posty: '.$user['posts'];
             echo '<br>Znajomi '.$friendsNum 
             ?>
 
-            <br><br><br>
-            <form class="form-wall" action="index.php" method="POST">
-                <textarea name="post_text" placeholder="Jak leci?"></textarea><br>
-                <input type="submit" class="publishBtn" name="publish" value="Opublikuj">
-            </form>
+                <br><br><br>
+                <form class="form-wall" action="index.php" method="POST">
+                    <textarea name="post_text" placeholder="Jak leci?"></textarea><br>
+                    <input type="submit" class="publishBtn" name="publish" value="Opublikuj">
+                </form>
 
 
-            <?php
+                <?php
 // $user_obj=new User($conn, $user['username']);
 // echo $user_obj->getUsername();
 
@@ -49,7 +50,7 @@ $post->loadPosts();
 
 
             ?>
-        </div>
+            </div>
 
         </div>
 
