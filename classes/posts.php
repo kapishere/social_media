@@ -44,8 +44,9 @@ public function showPosts($data)
 
         if($row['receiver']!=='')
         {
-            $objectUser=new User($this->conn, $row['author']);//conn
-            $receiver="<a href='".$row['receiver']."'>do ".$receiver."</a>";
+            $objectUser=new User($this->conn, $row['receiver']);
+			$receiverPic=$objectUser->getPicture();
+            $receiver="do <a href='".$row['receiver']."'> <img height='25px' src='data:image/png;base64,$receiverPic'> ".$receiver."</a>";
         }
         
 
@@ -124,10 +125,12 @@ if($interval->y >= 1) {
 						}
 						
 					}
+					$userObject=new User($this->conn, $author);
+$authorPic=$userObject->getPicture();
 
 $string.="<div class='status-posts' onClick='toggle$id()'>
 <div class='author-name'>
-<a href='$author'>$author</a><h3 style='display: inline-block;'> $receiver </h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 style='display: inline-block;'> $time_message</h4>  <br><br>
+<a href='$author'><img height='35px'  src='data:image/png;base64,$authorPic'> $author </a><h3 style='display: inline-block;'> $receiver </h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 style='display: inline-block;'> $time_message</h4>  <br><br>
 </div>
 <div class='post-body'>$body<br></div><br>
 </div>

@@ -1,6 +1,5 @@
   <?php
 include ("include/header.php");
-
 ?>
 
 
@@ -20,7 +19,7 @@ $query = mysqli_query($conn, "SELECT * FROM friends_requests WHERE user_to='$use
 			$user_from = $row['user_from'];
 			$user_from_obj = new User($conn, $user_from);
 
-			echo '<h3>'.$user_from_obj->getNames() . " wysłał ci zaproszenie do grona znajomych</h3>";
+			echo '<a href="'.$user_from_obj->getUsername() .'"><h3><img width="25px" src="data:image/png;base64,'.$user_from_obj->getPicture().'">    '.$user_from_obj->getNames() . "</a> wysłał ci zaproszenie do grona znajomych</h3>";
 
 			$user_from_friend_array = $user_from_obj->getFriends();
 

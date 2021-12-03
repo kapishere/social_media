@@ -25,6 +25,12 @@ header("Location: index.php");
         <div class="request">
             <div class="wall column">
                 <a href="<?php echo $user['username']?>" id="names">
+                    <a href="<?php echo $user['username']?>" id="names">
+                        <img width='60px' src='<?php  echo "data:image/png;base64,". $user['picture']?>'>
+
+                    </a>
+                </a>
+                <a href="<?php echo $user['username']?>" id="names">
                     <?php echo $user['name'].' '.$user['last_name']; ?></a>
                 <br>
                 <?php
@@ -41,14 +47,9 @@ header("Location: index.php");
 
 
                 <?php
-// $user_obj=new User($conn, $user['username']);
-// echo $user_obj->getUsername();
 
 $post=new Posts($conn, $user['username']);
 $post->loadPosts();
-
-
-
             ?>
             </div>
 

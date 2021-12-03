@@ -32,6 +32,7 @@ $post->submitPosts($_POST['post_text'], $username1);
     <div class="wall column">
 
         <a href="<?php echo $userInfo['username']?>" id="names">
+            <img width='60px' src='<?php  echo "data:image/png;base64,". $userInfo['picture']?>'>
             <?php echo $userInfo['name'].' '.$userInfo['last_name']; ?></a><br>
         <?php echo '<br>Polubienia '.$userInfo['likes'] ?>
         <?php echo '<br>Posty '.$userInfo['posts'] ?>

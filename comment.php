@@ -136,10 +136,13 @@ if($interval->y >= 1) {
 
 
 $userObject=new User($conn, $author);
+$authorUsername=$userObject->getUsername();
+$userObject
 
 ?>
     <div class="comment_section">
         <br>
+        <img height='20px' width="20px" src='<?php  echo "data:image/png;base64,". $userObject->getPicture()?>'>
         <a href="<?php echo $author?>" target='_parent'><?php  echo $author; ?></a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $time_message."<br><br>".$commentBody; ?><br>
         <hr> <br><br>

@@ -36,7 +36,7 @@ nav a {
 }
 .publishBtn {
   border-radius: 5px;
-  float: right;
+  display: inline-block;
   font-size: 17px;
 }
 
@@ -143,4 +143,25 @@ textarea {
   margin: auto;
   position: relative;
   border-radius: 5px;
+}
+
+.comment_section img {
+  height: 15px;
+  width: 15px;
+  object-fit: cover;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+.column img {
+  height: 40px;
+  object-fit: cover;
+  width: 40px;
+}
+.author-name img {
+  height: 30px;
+  object-fit: cover;
+  width: 30px;
 }

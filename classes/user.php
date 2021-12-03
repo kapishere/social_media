@@ -91,6 +91,14 @@ public function getPosts()
     return $row['friendArr'];
 }
 
+public function getPicture()
+{
+    $user=$this->user['username'];
+    $query=mysqli_query($this->conn, "Select picture from users where username='$user'");
+    $row=mysqli_fetch_array($query);
+    return $row['picture'];
+}
+
     
 
 }

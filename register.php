@@ -18,7 +18,7 @@ require 'require/config.php';
 <body>
     <div class="page">
 
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <h1>Zarejestruj się</h1>
             <div class="form-box">
                 <label for="fname">Imie:</label>
@@ -41,12 +41,20 @@ require 'require/config.php';
                 <input type="password" name="password2" placeholder="Potwierdź hasło"><br>
             </div>
             <div class="form-box">
-                <input type="submit" name="submitRegister" value="Zarejestruj się"><br>
+
+                <label for="foto">Zdjecie: </label>
+                <input type="file" name="foto"><br>
+            </div>
+            <div class="form-box">
+                <input default='picture.png' type="submit" name="submitRegister" value="Zarejestruj się"><br>
             </div>
 
             <div class="form-box">
                 <?php
      if(isset($_POST['submitRegister'])) {
+         if(!file_exists('./uploads')){
+        mkdir('uploads', 0777);
+    }
     $email=$_POST['email'];
     $fname=$_POST['fname'];
     $lname=$_POST['lname'];
@@ -56,12 +64,20 @@ require 'require/config.php';
     $repeatChecker = mysqli_query($conn, "SELECT email FROM users WHERE email='$email'");
     $repeatedEmails= mysqli_num_rows($repeatChecker);
 
-    if(empty($fname) || empty($lname) || empty($email) || empty($password2) || empty($password)) echo '<p>wypełnij dane</p>';else{
+    if(empty($fname) || empty($lname) || empty($email) || empty($password2) || empty($password)|| empty($_POST['foto'])) echo '<p>wypełnij dane</p>';else{
    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) echo "<p>błędny email</p>"; else if($repeatedEmails > 0) echo "<p>email jest już używany</p>"; else	{	
 if($password!=$password2) echo '<p>Hasła się róznia</p>'; else{
     $hashedPassword =password_hash($password, PASSWORD_DEFAULT);
- $query = mysqli_query($conn, "INSERT INTO users VALUES ('', '$fname', '$lname', '$email', '$hashedPassword', '', '', '$fname$lname', ',')");
+    $targetDir = 'uploads/';
  
+$uploadedfile = $targetDir.basename($_FILES['foto']['name']);
+copy($_FILES['foto']['tmp_name'], $uploadedfile);
+$foto = file_get_contents($uploadedfile);
+$fotobuff = base64_encode($foto);
+    
+
+$query = mysqli_query($conn, "INSERT INTO users VALUES ('', '$fname', '$lname', '$email', '$hashedPassword', '', '', '$fname$lname', ',', '$fotobuff')");
+
  header("Location: login.php");
 		 exit();
 }}}}
