@@ -2,13 +2,15 @@
   background-color: #d9d9d9;
   width: 100%;
 }
+
+body {
+  background-color: #d9d9d9;
+}
 body iframe {
   background-color: #fff;
 }
-
 .request {
   background-color: #d9d9d9;
-  height: 100%;
 }
 
 .top-bar {

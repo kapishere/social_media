@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/styleHeader.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/styleHeader.css">
 </head>
 
-<body>
+<body style="background-color: #fff;">
     <?php
     include ("classes/user.php");
 include ("classes/posts.php");

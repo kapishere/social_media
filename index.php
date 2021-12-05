@@ -47,10 +47,10 @@ header("Location: index.php");
 
 
                 <?php
-
 $post=new Posts($conn, $user['username']);
 $post->loadPosts();
             ?>
+
             </div>
 
         </div>

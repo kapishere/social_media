@@ -100,7 +100,7 @@ if($interval->y >= 1) {
 							$time_message = " wczoraj";
 						}
 						else {
-							$time_message = $interval->d . " dnii temu";
+							$time_message = $interval->d . " dni temu";
 						}
 					}
 					else if($interval->h >= 1) {

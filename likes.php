@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="css/styleHeader.css">
+
 
 </head>
 
-<body>
+<body style="background-color: #fff;">
+
     <?php
     include ("classes/user.php");
 include ("classes/posts.php");
@@ -37,7 +38,7 @@ $likes=mysqli_query($conn, "Select likes, author from posts where id='$postId'")
 $row=mysqli_fetch_array($likes);
 $totalLikes=$row['likes'];
 
-// $Liked_by=$row['author'];
+
 $userDetails=mysqli_query($conn, "Select * from users where username='$userLiked'");
 $row=mysqli_fetch_array($userDetails);
 $totalUserLikes=$row['likes'];
@@ -101,6 +102,7 @@ else
 }
 
 ?>
+
 </body>
 
 </html>
